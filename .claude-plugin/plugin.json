@@ -1,0 +1,12 @@
+{
+  "name": "keywordskills",
+  "description": "Keyword research skills for AI agents — analyze keywords, check metrics, browse your library, and organize into lists. Powered by TheKeyword API.",
+  "version": "1.0.0",
+  "author": {
+    "name": "TheKeyword",
+    "email": "hello@thekeyword.io"
+  },
+  "homepage": "https://thekeyword.io",
+  "repository": "https://github.com/andginja/keywordskills",
+  "license": "MIT"
+}

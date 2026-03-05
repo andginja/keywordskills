@@ -1,0 +1,29 @@
+{
+  "name": "keywordskills",
+  "owner": {
+    "name": "TheKeyword",
+    "email": "hello@thekeyword.io"
+  },
+  "metadata": {
+    "description": "Keyword research skills for AI agents. Analyze keywords, check metrics, browse your library, and organize into lists.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "keywordskills",
+      "source": "./",
+      "description": "Keyword research skills for AI agents — analyze keywords, check metrics, browse your library, and organize into lists. Powered by TheKeyword API.",
+      "version": "1.0.0",
+      "author": {
+        "name": "TheKeyword",
+        "email": "hello@thekeyword.io"
+      },
+      "homepage": "https://thekeyword.io",
+      "repository": "https://github.com/andginja/keywordskills",
+      "license": "MIT",
+      "keywords": ["keyword-research", "seo", "keywords", "search-volume", "ai-agent"],
+      "category": "productivity",
+      "tags": ["seo", "keyword-research", "marketing", "content-strategy"]
+    }
+  ]
+}
