@@ -155,6 +155,17 @@ GET /api/v1/keywords?trend_direction=rising&sort=-search_volume
 GET /api/v1/keywords?geo=PT&sort=-search_volume
 ```
 
+## Unanalyzed Keywords
+
+Keywords with `status=known` are discovered as related results but not yet fully analyzed (no signals, forecasts, or content briefs). Use them to find high-potential keywords to analyze next:
+
+```
+GET /api/v1/keywords?status=known&sort=-search_volume&limit=20
+GET /api/v1/keywords?status=known&sort=-opportunity_score&difficulty_lte=30&limit=10
+```
+
+To batch-analyze them, see the **Library Batch Analysis** section in the **keyword-analysis** skill.
+
 ## Tips
 
 - Omitting `geo` returns keywords from all countries — useful for a global overview

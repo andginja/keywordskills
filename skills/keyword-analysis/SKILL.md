@@ -127,12 +127,47 @@ If `status` is `failed`, check the `error` field and inform the user.
 3. Poll: `GET /api/v1/jobs/{jobId}` until complete
 4. Present: comparison table sorted by volume
 
+## Library Batch Analysis
+
+You can pick unanalyzed keywords from the user's library (keywords discovered as related results but not yet fully analyzed) and batch-analyze them. This combines the **keyword-library** and **batch analysis** workflows.
+
+### Workflow
+
+1. `GET /api/v1/usage` — Check credits
+2. `GET /api/v1/keywords?status=known&sort=-search_volume&limit=20` — Fetch top unanalyzed keywords
+3. Present the list to the user and let them confirm which to analyze
+4. Extract the `keyword` field from each result
+5. `POST /api/v1/keywords/batch` — Submit as batch with `{"keywords": ["keyword1", "keyword2", ...]}`
+6. Poll `GET /api/v1/jobs/{jobId}` until complete
+
+### Available Filters for Unanalyzed Keywords
+
+Use any filter from the keyword-library skill to narrow down which unanalyzed keywords to analyze:
+
+```
+GET /api/v1/keywords?status=known&sort=-search_volume&limit=10
+GET /api/v1/keywords?status=known&sort=-cpc&difficulty_lte=30&limit=20
+GET /api/v1/keywords?status=known&sort=-opportunity_score&search_volume_gte=1000&limit=15
+GET /api/v1/keywords?status=known&intent=commercial&sort=-search_volume&limit=10
+```
+
+### Example
+
+**User:** "Analyze the top 10 highest-volume unanalyzed keywords"
+
+1. Check credits: `GET /api/v1/usage` — need 10 credits
+2. Fetch: `GET /api/v1/keywords?status=known&sort=-search_volume&limit=10`
+3. Show user the preview list with volumes
+4. On confirmation, extract keyword names and submit batch
+5. Poll until complete, present results
+
 ## Tips
 
 - Keyword slugs are URL-safe: "remote work tools" becomes "remote-work-tools"
 - After analysis, use the **keyword-lookup** skill to get detailed data including related keywords and SERP analysis
 - Use the **keyword-lists** skill to organize analyzed keywords into groups
 - Batch analysis is async — always poll the job, don't assume instant results
+- Use `status=known` to find unanalyzed keywords discovered from related results
 
 ## Related Skills
 
