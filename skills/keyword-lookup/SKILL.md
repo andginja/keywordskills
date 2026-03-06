@@ -112,11 +112,12 @@ Returns a map of slug to status (`analyzed` or `known`). If a keyword doesn't ex
 
 ## Workflow
 
-1. Convert the keyword to a slug (lowercase, hyphens for spaces)
-2. `GET /api/v1/keywords/{slug}?include=related,serp` — Fetch data with expansions
-3. If 404: keyword hasn't been analyzed yet — offer to analyze it using keyword-analysis skill
-4. Present the data: volume, difficulty, CPC, intent, trend, opportunity score
-5. If the user wants more detail: show related keywords, SERP breakdown, or generate content brief
+1. If the user hasn't specified a country, check their default via `GET /api/v1/settings` or ask which market they're targeting
+2. Convert the keyword to a slug (lowercase, hyphens for spaces)
+3. `GET /api/v1/keywords/{slug}?geo=XX&include=related,serp` — Fetch data with expansions
+4. If 404: keyword hasn't been analyzed yet — analyze it inline with `POST /api/v1/keywords/analyze` using `{"keyword": "...", "country": "XX"}` (costs 1 credit), then re-fetch with `GET /api/v1/keywords/{slug}?geo=XX&include=related,serp`
+5. Present the data: volume, difficulty, CPC, intent, trend, opportunity score
+6. If the user wants more detail: show related keywords, SERP breakdown, or generate content brief
 
 ## Examples
 
@@ -147,9 +148,11 @@ Present side-by-side comparison of volume, difficulty, CPC (note different curre
 
 ## Tips
 
-- Always include `?geo=XX` to get country-specific data
+- Always include `?geo=XX` to get country-specific data. If no geo is specified by the user, check their default via `GET /api/v1/settings` or ask
 - Use `?include=related` to discover more keyword ideas in one call
-- If a keyword returns 404, it needs to be analyzed first — don't retry, suggest analysis
+- `?include=` expansions only work on the `GET /api/v1/keywords/{slug}` endpoint, not on the `POST /api/v1/keywords/analyze` endpoint — always re-fetch after analyzing
+- If a keyword returns 404, analyze it first with `POST /api/v1/keywords/analyze` (see workflow step 4) rather than asking the user to invoke a separate skill
+- SERP responses can be large (50KB+) — parse key fields (`results`, `features`, `videos`, `discussions`) rather than reading raw output
 - CPC currency varies by country (US=USD, PT=EUR, GB=GBP, etc.)
 
 ## Related Skills
