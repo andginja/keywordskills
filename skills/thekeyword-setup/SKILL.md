@@ -85,7 +85,7 @@ Always check credits before running analyses. Different plans have different cap
 | Forecasts | -- | -- | Yes | Yes |
 | Content briefs | -- | -- | Yes | Yes |
 | Discovery | -- | -- | Yes | Yes |
-| Clusters | -- | -- | -- | Yes |
+| Clusters | -- | -- | Yes | Yes |
 
 **Check usage before any analysis:**
 
@@ -131,3 +131,7 @@ A successful response confirms your API key is valid and shows your current plan
 - **keyword-lookup** — Check a specific keyword's data
 - **keyword-library** — Browse all your analyzed keywords
 - **keyword-lists** — Organize keywords into named lists
+- **keyword-clusters** — Semantic keyword grouping and topic clusters (Pro+)
+- **keyword-signals** — Market change alerts and opportunities (Starter+)
+- **keyword-serp** — SERP analysis, domain dominance, PAA questions
+- **keyword-discovery** — Topic exploration, gap analysis, content briefs (Pro+)

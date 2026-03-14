@@ -4,13 +4,17 @@ This repository contains Agent Skills for [TheKeyword](https://thekeyword.io) ke
 
 ## Skills
 
-| Skill | Purpose |
-|-------|---------|
-| `thekeyword-setup` | Foundation: API auth, base URL, geo/country config, plan tiers |
-| `keyword-analysis` | Analyze keywords (single + batch with job polling) |
-| `keyword-lookup` | Look up a specific keyword's full metrics and related data |
-| `keyword-library` | Browse, filter, and sort all analyzed keywords |
-| `keyword-lists` | Create lists and organize keywords into groups |
+| Skill | Purpose | Plan |
+|-------|---------|------|
+| `thekeyword-setup` | Foundation: API auth, base URL, geo/country config, plan tiers | All |
+| `keyword-analysis` | Analyze keywords (single + batch with job polling) | All |
+| `keyword-lookup` | Look up a specific keyword's full metrics and related data | All |
+| `keyword-library` | Browse, filter, and sort all analyzed keywords | All |
+| `keyword-lists` | Create lists and organize keywords into groups | All |
+| `keyword-clusters` | Semantic keyword grouping and topic clusters | Pro+ |
+| `keyword-signals` | Market change alerts and opportunities | Starter+ |
+| `keyword-serp` | SERP analysis, domain dominance, PAA, discussions | All |
+| `keyword-discovery` | Topic exploration, gap analysis, content briefs | Pro+ |
 
 ## Skill Dependencies
 
@@ -21,7 +25,11 @@ thekeyword-setup (read first)
   ├── keyword-analysis
   ├── keyword-lookup
   ├── keyword-library
-  └── keyword-lists
+  ├── keyword-lists
+  ├── keyword-clusters
+  ├── keyword-signals
+  ├── keyword-serp
+  └── keyword-discovery
 ```
 
 ## Requirements
@@ -45,4 +53,4 @@ Always specify the target country when analyzing or querying keywords. Supported
 
 ## Plan Awareness
 
-Check `GET /api/v1/usage` before analyses. Each analysis costs 1 credit. Batch analysis and advanced features (forecasts, content briefs, discovery) require higher-tier plans.
+Check `GET /api/v1/usage` before analyses. Each analysis costs 1 credit. Batch analysis and advanced features (forecasts, content briefs, discovery, clusters) require higher-tier plans.

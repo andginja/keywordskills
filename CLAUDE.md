@@ -9,6 +9,10 @@ Keyword research skills for Claude Code powered by TheKeyword API.
 - `/keywordskills:keyword-lookup` — Look up keyword details
 - `/keywordskills:keyword-library` — Browse keyword library
 - `/keywordskills:keyword-lists` — Manage keyword lists
+- `/keywordskills:keyword-clusters` — Topic clusters and content silos (Pro+)
+- `/keywordskills:keyword-signals` — Market signals and alerts (Starter+)
+- `/keywordskills:keyword-serp` — SERP analysis and domain dominance
+- `/keywordskills:keyword-discovery` — Topic exploration and gap analysis (Pro+)
 
 ## Quick Start
 
